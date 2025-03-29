@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My Blog</title>
-    <!-- Import the zero-md web component -->
-    <script type="module" src="https://cdn.jsdelivr.net/npm/zero-md@3?register"></script>
-</head>
-<body>
-    <h1>Welcome to My Blog</h1>
-    <p>Explore my latest analysis:</p>
-    <!-- Embed the Markdown file using zero-md -->
-    <zero-md src="https://raw.githubusercontent.com/fuhaoda/blog-markdown-files/main/Stanford%20vs.%20Harvard.md"></zero-md>
-</body>
-</html>
+---
+layout: default
+title: Home
+---
+
+<h1>Welcome to My Blog</h1>
+<p>Explore my latest analyses:</p>
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a> - {{ post.date | date: "%B %d, %Y" }}
+    </li>
+  {% endfor %}
+</ul>
