@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>My Blog</title>
+    <!-- Import the zero-md web component -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/zero-md@3?register"></script>
 </head>
 <body>
     <h1>Welcome to My Blog</h1>
     <p>Explore my latest analysis:</p>
-    <ul>
-        <li><a href="https://github.com/fuhaoda/blog-markdown-files/raw/main/Stanford%20vs.%20Harvard.md" target="_blank">Stanford vs. Harvard: A Comprehensive Undergraduate Comparison</a></li>
-    </ul>
+    <!-- Embed the Markdown file using zero-md -->
+    <zero-md src="https://raw.githubusercontent.com/fuhaoda/blog-markdown-files/main/Stanford%20vs.%20Harvard.md"></zero-md>
 </body>
 </html>
