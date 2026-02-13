@@ -1,14 +1,290 @@
 ---
-layout: default
-title: Home
+layout: null
+title: Haoda Fu
 ---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Haoda Fu | Apps, Writing, and Research</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f3ede1;
+      --paper: #fbf7ef;
+      --ink: #1f2520;
+      --muted: #4d5d50;
+      --deep-green: #234734;
+      --gold: #d2a244;
+      --line: #d8c7a8;
+      --card: #fffdf7;
+    }
 
-<h1>Welcome to My Blog</h1>
-<p>Explore my latest analyses:</p>
-<ul>
-  {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a> - {{ post.date | date: "%B %d, %Y" }}
-    </li>
-  {% endfor %}
-</ul>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 16%, #f7dd9b 0, #f7dd9b 15%, transparent 16%),
+        radial-gradient(circle at 89% 82%, #b9d6be 0, #b9d6be 18%, transparent 19%),
+        linear-gradient(150deg, #f7f0df 0%, var(--bg) 52%, #efe6d4 100%);
+      min-height: 100vh;
+      line-height: 1.65;
+      padding: 24px 16px 56px;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      background: var(--paper);
+      background: color-mix(in srgb, var(--paper) 91%, #ffffff 9%);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: 0 24px 54px rgba(35, 71, 52, 0.12);
+      overflow: hidden;
+    }
+
+    .hero {
+      padding: 48px 28px 34px;
+      background:
+        linear-gradient(115deg, rgba(35, 71, 52, 0.96), rgba(35, 71, 52, 0.86)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23d2a24455' stroke-width='1.6'%3E%3Cpath d='M12 12h96v96H12z'/%3E%3Cpath d='M0 60h120M60 0v120'/%3E%3C/g%3E%3C/svg%3E");
+      color: #f8f4e8;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      background: rgba(210, 162, 68, 0.25);
+      border: 1px solid rgba(210, 162, 68, 0.45);
+      color: #ffe9bb;
+      padding: 6px 10px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.1;
+      letter-spacing: 0.01em;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 700px;
+      color: #e8e4d8;
+      font-size: 1.05rem;
+    }
+
+    main {
+      padding: 30px 28px 38px;
+      display: grid;
+      gap: 22px;
+    }
+
+    .section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px 18px;
+      animation: fadeUp .5s ease both;
+    }
+
+    .section:nth-child(2) { animation-delay: .1s; }
+    .section:nth-child(3) { animation-delay: .2s; }
+    .section:nth-child(4) { animation-delay: .3s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section h2 {
+      margin: 0 0 10px;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.5rem;
+      color: var(--deep-green);
+    }
+
+    .section p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .education {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: var(--ink);
+    }
+
+    .education li {
+      margin: 8px 0;
+    }
+
+    .app-grid {
+      margin-top: 14px;
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .app-card {
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: linear-gradient(180deg, #fffdf6 0%, #f8f2e4 100%);
+      padding: 16px 14px;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      display: block;
+    }
+
+    .app-card:hover {
+      transform: translateY(-3px);
+      border-color: #c89d49;
+      box-shadow: 0 10px 24px rgba(35, 71, 52, 0.14);
+    }
+
+    .app-card h3 {
+      margin: 0 0 6px;
+      font-size: 1.1rem;
+      color: #1f3628;
+    }
+
+    .app-card p {
+      margin: 0 0 8px;
+      color: #465648;
+      font-size: .96rem;
+    }
+
+    .app-card .link {
+      color: #18486d;
+      font-size: .9rem;
+      word-break: break-word;
+    }
+
+    .post-list {
+      list-style: none;
+      margin: 14px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .post-list li {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fffcf4;
+      padding: 11px 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 10px;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .post-list a {
+      color: #0f4b66;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .post-list a:hover {
+      text-decoration: underline;
+    }
+
+    .post-date {
+      color: #55665a;
+      font-size: .88rem;
+    }
+
+    .hint {
+      margin-top: 12px;
+      font-size: .9rem;
+      color: #4f5f53;
+    }
+
+    footer {
+      text-align: center;
+      padding: 8px 28px 30px;
+      color: #5c6b61;
+      font-size: .9rem;
+    }
+
+    @media (max-width: 700px) {
+      .hero { padding: 36px 20px 28px; }
+      main { padding: 22px 18px 28px; }
+      .section { padding: 16px 14px; }
+      .post-list li { padding: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="eyebrow">Personal Site</div>
+      <h1>Haoda Fu</h1>
+      <p>Statistics, machine learning, and practical tools. This page collects my education background, web applications, and blog notes.</p>
+    </header>
+
+    <main>
+      <section class="section">
+        <h2>Education</h2>
+        <ul class="education">
+          <li>Nankai University, 1998-2002, Bachelor of Science, Probability and Mathematical Statistics</li>
+          <li>University of Wisconsin-Madison, 2002-2007, Ph.D. in Statistics and minor in Computer Science</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Web Apps</h2>
+        <p>Two interactive apps are available below. Click any card to open the app.</p>
+        <div class="app-grid">
+          <a class="app-card" href="https://fuhaoda.github.io/KeyBand/" target="_blank" rel="noopener noreferrer">
+            <h3>KeyBand</h3>
+            <p>A focused music and keyboard web experience designed for quick use and experimentation.</p>
+            <div class="link">https://fuhaoda.github.io/KeyBand/</div>
+          </a>
+          <a class="app-card" href="https://fuhaoda.github.io/tonic-ear/" target="_blank" rel="noopener noreferrer">
+            <h3>Tonic Ear</h3>
+            <p>Ear-training style interaction for listening practice and tonal pattern exploration.</p>
+            <div class="link">https://fuhaoda.github.io/tonic-ear/</div>
+          </a>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Blog</h2>
+        <p>Latest posts from this site:</p>
+        {% if site.posts.size > 0 %}
+        <ul class="post-list">
+          {% for post in site.posts limit: 12 %}
+          <li>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            <span class="post-date">{{ post.date | date: "%B %d, %Y" }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+        <p class="hint">To add a new post, put a Markdown file into <code>posts/</code> and push. GitHub Action will convert it to <code>_posts/</code>.</p>
+        {% else %}
+        <p class="hint">No posts yet. Add Markdown files into <code>posts/</code> and the workflow will publish them automatically.</p>
+        {% endif %}
+      </section>
+    </main>
+    <footer>
+      © {{ "now" | date: "%Y" }} Haoda Fu
+    </footer>
+  </div>
+</body>
+</html>

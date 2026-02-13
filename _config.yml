@@ -1,4 +1,5 @@
-title: My Blog
-description: A collection of my writings.
+title: Hao Fu
+description: Personal homepage for apps, writings, and research notes.
+url: "https://fuhaoda.github.io"
 theme: minima
 markdown: kramdown
